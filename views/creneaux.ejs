@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Créneaux Horaires</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Créneaux Horaires</h1>
+        <div class="row">
+          <% creneaux.forEach(creneau => { %>
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-header">
+                  <h5><%= creneau.heure_debut %> - <%= creneau.heure_fin %></h5>
+                </div>
+                <div class="card-body">
+                  <h6>Séances :</h6>
+                  <% if (creneau.seances.length > 0) { %>
+                    <ul>
+                      <% creneau.seances.forEach(seance => { %>
+                        <li>
+                          <strong>Enseignant :</strong> <%= seance.enseignant ? seance.enseignant.prenom : 'Non défini' %><br>
+                          <strong>Salle :</strong> <%= seance.salle ? seance.salle.nom : 'Non défini' %> (Capacité : <%= seance.salle ? seance.salle.capacite : 'Non défini' %>)<br>
+                        </li>
+                      <% }) %>
+                    </ul>
+                  <% } else { %>
+                    <p>Aucune séance pour ce créneau.</p>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
