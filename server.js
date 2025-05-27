@@ -14,7 +14,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connexion à MongoDB
-mongoose.connect('mongodb+srv://konanclaudeboriskoffi:EINdj6qHrHFG0ckq@cluster0.wgbnxzs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/schoolManagement')
+mongoose.connect('mongodb+srv://konanclaudeboriskoffi:l239GQBlHDu2Vdgv@cluster0.wgbnxzs.mongodb.net/schoolManagement')
         .then(() => console.log('Connected to MongoDB'))
         .catch(err => console.error('MongoDB connection error:', err));
 
